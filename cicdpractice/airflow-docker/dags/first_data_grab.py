@@ -13,7 +13,7 @@ from sqlalchemy import create_engine
 
 DB_NAME = "research_db_v1"
 USER = Variable.get("POSTGRES_USER", default_var="not found")
-PASSWORD = "airflow"
+PASSWORD = Variable.get("POSTGRES_PASSWORD", default_var="not found")
 HOST = "postgres"  # Change to container name or IP if needed
 PORT = "5432"  # Use the exposed port
 SCHEMA="land"
