@@ -3,15 +3,16 @@ from airflow.providers.postgres.hooks.postgres import PostgresHook
 from airflow.operators.python import PythonOperator
 from datetime import datetime
 
+postgres_hook = PostgresHook(postgres_conn_id="research_db_v1")
+
 
 def load_data_to_postgres(**kwargs):
-	postgres_hook = PostgresHook(postgres_conn_id="postgres_default") # Your connection ID
 	sql = """
-		CREATE TABLE IF NOT EXISTS my_table (
+		CREATE TABLE IF NOT EXISTS land.my_table (
 			id INT PRIMARY KEY,
 			name VARCHAR(255)
 		);
-		INSERT INTO my_table (id, name) VALUES (1, 'Airflow Data');
+		INSERT INTO land.my_table (id, name) VALUES (1, 'Airflow Data');
 	"""
 	postgres_hook.run(sql)
 

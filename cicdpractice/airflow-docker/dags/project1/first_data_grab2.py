@@ -44,7 +44,7 @@ def extract():
 	data=pd.json_normalize(data['data'])
 	print(data)
 
-	data.to_sql("crypto_api", engine, schema=schema, if_exists="replace", index=False)
+	data.to_sql("crypto_api2", engine, schema=schema, if_exists="replace", index=False)
 
 	print("Extracting data...")
 
@@ -57,9 +57,9 @@ def load():
 
 
 with DAG(
-	dag_id="crypto_api",
+	dag_id="crypto_api2",
 	default_args=default_args,
-	description='crypto_api',
+	description='crypto_api2',
 	start_date=datetime(2023, 1, 1),
 	schedule=None,
 	#schedule_interval='@daily',
