@@ -1,3 +1,4 @@
+
 from airflow import DAG
 from airflow.providers.postgres.hooks.postgres import PostgresHook
 from airflow.operators.python import PythonOperator
@@ -7,7 +8,7 @@ from requests import Request, Session
 from requests.exceptions import ConnectionError, Timeout, TooManyRedirects
 import pandas as pd
 import json
-from utils.sql_tools2 import ps_engine_init
+from utils.sql_tools import ps_engine_init
 
 db_name = "research_db_v1"
 schema="land"

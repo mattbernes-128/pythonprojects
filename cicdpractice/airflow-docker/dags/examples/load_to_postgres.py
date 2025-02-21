@@ -12,7 +12,7 @@ def load_data_to_postgres(**kwargs):
 			id INT PRIMARY KEY,
 			name VARCHAR(255)
 		);
-		INSERT INTO land.my_table (id, name) VALUES (1, 'Airflow Data');
+		INSERT INTO land.my_table (id, name) VALUES (2, 'Airflow Data');
 	"""
 	postgres_hook.run(sql)
 
