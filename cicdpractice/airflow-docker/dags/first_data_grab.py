@@ -1,6 +1,7 @@
 from airflow import DAG
 from airflow.providers.postgres.hooks.postgres import PostgresHook
 from airflow.operators.python import PythonOperator
+from airflow.hooks.base import BaseHook
 from datetime import datetime
 from requests import Request, Session
 from requests.exceptions import ConnectionError, Timeout, TooManyRedirects
@@ -11,6 +12,9 @@ from utils.sql_tools2 import ps_engine_init
 db_name = "research_db_v1"
 schema="land"
 engine = ps_engine_init(db_name)
+conn = BaseHook.get_connection("crypto_api")
+api_key = conn.password
+
 
 default_args = {
 	'owner': 'airflow',
@@ -29,7 +33,7 @@ def extract():
 	}
 	headers = {
 	  'Accepts': 'application/json',
-	  'X-CMC_PRO_API_KEY': '1bab87fd-ff0f-4cb7-9ded-96361cfcda0e',
+	  'X-CMC_PRO_API_KEY': api_key,
 	}
 
 	session = Session()
