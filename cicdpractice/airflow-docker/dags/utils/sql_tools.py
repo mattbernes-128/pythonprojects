@@ -1,7 +1,7 @@
 from sqlalchemy import create_engine
 from airflow.models import Variable
 
-#create psql engine instance
+#Create psql engine instance
 def ps_engine_init(database):
     DB_NAME = database #hint "research_db_v1"
     USER = Variable.get("POSTGRES_USER", default_var="not found")
