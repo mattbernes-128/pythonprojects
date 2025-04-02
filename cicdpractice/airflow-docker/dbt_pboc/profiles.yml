@@ -1,0 +1,12 @@
+dbt_pboc:
+  outputs:
+    dev: 
+      dbname: research_db_v1
+      host: postgres
+      pass: DAnc2NGY3A!
+      user: mattbernes
+      port: 5432
+      schema: land
+      threads: 1
+      type: postgres
+  target: dev
