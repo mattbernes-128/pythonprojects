@@ -25,7 +25,6 @@ default_args = {
     'retries': 0,
 }
 
-
 # Extract data using API key from CoinMarketCap
 def upload_csv(CSV_FILE_PATH,data_file_name):
     # Connect to Postgres using Airflow's connection
@@ -42,8 +41,6 @@ def upload_csv(CSV_FILE_PATH,data_file_name):
     table_name=table_name.replace('__Financial_Market_Statistics__Statistics_of_','')
     table_name=table_name.replace('__Money_and_Banking_Statistics','')
     table_name=table_name.replace('Domestic_RMB_Financial_Assets_Held_by_Overseas_Entities__clean','RMB_Assets_Held_Overseas__clean')
-
-
 
     df.to_sql(f"{table_name}", postgres_hook.get_sqlalchemy_engine(), schema="land", if_exists="replace", index=False)
 

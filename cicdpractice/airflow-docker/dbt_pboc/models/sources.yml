@@ -6,3 +6,5 @@ sources:
     schema: land
     tables:
         - name: 2023__Money_Supply__clean
+
+
