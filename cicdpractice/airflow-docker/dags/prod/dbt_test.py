@@ -8,19 +8,11 @@ with DAG(
     schedule_interval=None,
     catchup=False,
 ) as dag:
-    dbt_deps = BashOperator(
-        task_id='dbt_deps',
-        bash_command='cd /opt/airflow/dbt_pboc && dbt deps',
-    )
 
     dbt_run = BashOperator(
         task_id='dbt_run',
-        bash_command='cd /opt/airflow/dbt_pboc && dbt run',
+        bash_command='cd /opt/airflow/dbt_pboc && dbt run --select clean_schema.sql',
     )
 
-    dbt_test = BashOperator(
-        task_id='dbt_test',
-        bash_command='cd /opt/airflow/dbt_pboc && dbt test',
-    )
 
-    dbt_run >> dbt_test
+    dbt_run

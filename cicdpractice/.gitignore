@@ -1,2 +1,2 @@
 /airflow-docker/logs/
-*.env
+profiles.yml

@@ -14,7 +14,7 @@ x-airflow-common:
     AIRFLOW__CORE__SQL_ALCHEMY_CONN: postgresql+psycopg2://${POSTGRES_USER}:${POSTGRES_PASSWORD}@${POSTGRES_HOST}:${POSTGRES_PORT}/${POSTGRES_DB}
     AIRFLOW__CELERY__RESULT_BACKEND: db+postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@${POSTGRES_HOST}:${POSTGRES_PORT}/${POSTGRES_DB}
     AIRFLOW__CELERY__BROKER_URL: redis://:@redis:6379/0
-    AIRFLOW__CORE__FERNET_KEY: 'oIRKwMYsy3eGN90WkZAB4eMcUbzMZVF1FDVbqclrYI0='
+    AIRFLOW__CORE__FERNET_KEY: "oIRKwMYsy3eGN90WkZAB4eMcUbzMZVF1FDVbqclrYI0="
     AIRFLOW__CORE__DAGS_ARE_PAUSED_AT_CREATION: 'true'
     AIRFLOW__CORE__LOAD_EXAMPLES: 'false'
     AIRFLOW__API__AUTH_BACKENDS: 'airflow.api.auth.backend.basic_auth,airflow.api.auth.backend.session'
@@ -76,7 +76,6 @@ services:
       retries: 50
       start_period: 30s
     restart: always
-
   airflow-webserver:
     <<: *airflow-common
     command: webserver
@@ -95,7 +94,7 @@ services:
         condition: service_completed_successfully
     environment:
       <<: *airflow-common-env
-      AIRFLOW__CORE__FERNET_KEY: 'oIRKwMYsy3eGN90WkZAB4eMcUbzMZVF1FDVbqclrYI0=' # Add this line!
+      AIRFLOW__CORE__FERNET_KEY: "oIRKwMYsy3eGN90WkZAB4eMcUbzMZVF1FDVbqclrYI0=" # Add this line!
 
   airflow-scheduler:
     <<: *airflow-common
@@ -113,7 +112,7 @@ services:
         condition: service_completed_successfully
     environment:
       <<: *airflow-common-env
-      AIRFLOW__CORE__FERNET_KEY: 'oIRKwMYsy3eGN90WkZAB4eMcUbzMZVF1FDVbqclrYI0=' # Add this line!
+      AIRFLOW__CORE__FERNET_KEY: "oIRKwMYsy3eGN90WkZAB4eMcUbzMZVF1FDVbqclrYI0=" # Add this line!
 
   airflow-worker:
     <<: *airflow-common
@@ -129,7 +128,7 @@ services:
       start_period: 30s
     environment:
       <<: *airflow-common-env
-      AIRFLOW__CORE__FERNET_KEY: 'oIRKwMYsy3eGN90WkZAB4eMcUbzMZVF1FDVbqclrYI0=' # Add this line!
+      AIRFLOW__CORE__FERNET_KEY: "oIRKwMYsy3eGN90WkZAB4eMcUbzMZVF1FDVbqclrYI0=" # Add this line!
 
       # Required to handle warm shutdown of the celery workers properly
       # See https://airflow.apache.org/docs/docker-stack/entrypoint.html#signal-propagation
@@ -157,7 +156,7 @@ services:
         condition: service_completed_successfully
     environment:
       <<: *airflow-common-env
-      AIRFLOW__CORE__FERNET_KEY: 'oIRKwMYsy3eGN90WkZAB4eMcUbzMZVF1FDVbqclrYI0=' # Add this line!
+      AIRFLOW__CORE__FERNET_KEY: "oIRKwMYsy3eGN90WkZAB4eMcUbzMZVF1FDVbqclrYI0=" # Add this line!
 
   airflow-init:
     <<: *airflow-common
