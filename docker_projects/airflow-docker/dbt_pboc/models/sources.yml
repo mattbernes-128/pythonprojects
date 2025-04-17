@@ -1,0 +1,10 @@
+version: 2
+
+sources:
+  - name: research_db_v1
+    database: research_db_v1
+    schema: land
+    tables:
+        - name: 2023__Money_Supply__clean
+
+
